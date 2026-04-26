@@ -23,7 +23,7 @@
         @keydown="onKeyDown"
         @keyup="onKeyUp"
     >
-        <wwLayout path="buttonContent" direction="row" class="button-content" />
+        <wwLayout path="buttonContent" direction="row" class="button-content" ww-responsive="wwLayout" />
     </component>
 </template>
 
@@ -261,11 +261,8 @@ Access via: \`context.local.data?.['button']?.isLoading\``;
 
 .button-content {
     display: flex;
-    align-items: inherit;
-    justify-content: inherit;
-    flex-direction: inherit;
-    flex-wrap: inherit;
-    gap: inherit;
+    align-items: center;
+    justify-content: center;
     flex: 1;
     min-width: 0;
 }

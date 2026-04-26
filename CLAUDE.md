@@ -535,6 +535,32 @@ intensity: {
 }
 ```
 
+##### Length Properties (with Unit Choices):
+
+**`Length` also supports `unitChoices` for a single-value input with multiple unit options — use this instead of `Spacing` when you don't need corner/multi-side controls:**
+
+```javascript
+gap: {
+  label: { en: 'Gap' },
+  type: 'Length',
+  section: 'style',
+  options: {
+    unitChoices: [
+      { value: 'px', label: 'px', min: 0, max: 200 },
+      { value: 'rem', label: 'rem', min: 0, max: 10 },
+      { value: '%', label: '%', min: 0, max: 100 },
+    ],
+    noRange: true,  // Show number input only, no slider
+    useVar: true,   // Allow CSS variable usage
+  },
+  defaultValue: '0px',
+  bindable: true,
+  responsive: true,
+  states: true,
+  classes: true,
+}
+```
+
 ##### Spacing Properties (with Unit Choices):
 
 **Use for dimensions that need multiple unit options (px, %, em, etc.) with responsive/state support:**

@@ -128,7 +128,7 @@ export default {
         },
         rowGap: {
             label: { en: 'Row gap' },
-            type: 'Spacing',
+            type: 'Length',
             section: 'style',
             options: {
                 unitChoices: [
@@ -138,11 +138,12 @@ export default {
                 ],
                 noRange: true,
                 useVar: true,
-                isCorner: false,
             },
             defaultValue: '0px',
             bindable: true,
             responsive: true,
+            states: true,
+            classes: true,
             /* wwEditor:start */
             bindingValidation: {
                 type: 'string',
@@ -152,7 +153,7 @@ export default {
         },
         columnGap: {
             label: { en: 'Column gap' },
-            type: 'Spacing',
+            type: 'Length',
             section: 'style',
             options: {
                 unitChoices: [
@@ -162,11 +163,12 @@ export default {
                 ],
                 noRange: true,
                 useVar: true,
-                isCorner: false,
             },
             defaultValue: '0px',
             bindable: true,
             responsive: true,
+            states: true,
+            classes: true,
             /* wwEditor:start */
             bindingValidation: {
                 type: 'string',

@@ -261,8 +261,11 @@ Access via: \`context.local.data?.['button']?.isLoading\``;
 
 .button-content {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: inherit;
+    justify-content: inherit;
+    flex-direction: inherit;
+    flex-wrap: inherit;
+    gap: inherit;
     flex: 1;
     min-width: 0;
 }

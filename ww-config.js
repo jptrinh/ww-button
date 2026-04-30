@@ -54,7 +54,7 @@ export default {
             };
         },
     },
-    states: ['focus', 'disabled', 'active', 'loading'],
+    states: ['focus', 'focus-visible', 'disabled', 'active', 'loading'],
     triggerEvents: [
         { name: 'focus', label: { en: 'On focus' }, event: null },
         { name: 'blur', label: { en: 'On blur' }, event: null },

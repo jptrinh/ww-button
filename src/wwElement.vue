@@ -8,7 +8,7 @@
         :data-ww-flag="'btn-' + content.buttonType"
         :disabled="content.disabled"
         v-bind="properties"
-        @focus="isReallyFocused = true"
+        @focus="onFocus"
         @blur="onBlur($event)"
         @mousedown="onMouseActivate"
         @mouseup="onMouseDeactivate"
@@ -79,7 +79,9 @@ Access via: \`context.local.data?.['button']?.isLoading\``;
     data() {
         return {
             isReallyFocused: false,
+            isReallyFocusVisible: false,
             isReallyActive: false,
+            _lastFocusByPointer: false,
         };
     },
     computed: {
@@ -132,6 +134,14 @@ Access via: \`context.local.data?.['button']?.isLoading\``;
             }
             /* wwEditor:end */
             return this.isReallyActive;
+        },
+        isFocusVisible() {
+            /* wwEditor:start */
+            if (this.wwEditorState.isSelected) {
+                return this.wwElementState.states.includes('focus-visible');
+            }
+            /* wwEditor:end */
+            return this.isReallyFocusVisible;
         },
         buttonContentStyle() {
             return {
@@ -187,6 +197,16 @@ Access via: \`context.local.data?.['button']?.isLoading\``;
                 }
             },
         },
+        isFocusVisible: {
+            immediate: true,
+            handler(value) {
+                if (value) {
+                    this.$emit('add-state', 'focus-visible');
+                } else {
+                    this.$emit('remove-state', 'focus-visible');
+                }
+            },
+        },
     },
     methods: {
         /* wwEditor:start */
@@ -204,8 +224,14 @@ Access via: \`context.local.data?.['button']?.isLoading\``;
             }
         },
         /* wwEditor:end */
+        onFocus() {
+            this.isReallyFocused = true;
+            this.isReallyFocusVisible = !this._lastFocusByPointer;
+            this._lastFocusByPointer = false;
+        },
         onBlur() {
             this.isReallyFocused = false;
+            this.isReallyFocusVisible = false;
         },
         onActivate(event) {
             this.isReallyActive = true;
@@ -220,12 +246,14 @@ Access via: \`context.local.data?.['button']?.isLoading\``;
             this.$emit('trigger-event', { name: eventName, event });
         },
         onTouchActivate() {
+            this._lastFocusByPointer = true;
             this.isReallyActive = true;
         },
         onTouchDeactivate() {
             this.isReallyActive = false;
         },
         onMouseActivate() {
+            this._lastFocusByPointer = true;
             this.isReallyActive = true;
         },
         onMouseDeactivate() {
@@ -259,6 +287,7 @@ Access via: \`context.local.data?.['button']?.isLoading\``;
         font-family: inherit;
         font-size: inherit;
     }
+
     &.-link {
         cursor: pointer;
     }

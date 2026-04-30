@@ -10,6 +10,7 @@ export default {
         displayAllowedValues: ['flex', 'inline-flex'],
         linkable: true,
     },
+    inherit: [{ type: 'ww-layout' }],
     editor: {
         label: {
             en: 'Button',
@@ -95,7 +96,8 @@ export default {
                 tooltip: 'The ID of the form to submit (allows submitting a form from outside its container)',
             },
             propertyHelp: {
-                tooltip: 'Enter the ID of the form this button should submit. This allows the button to work even when placed outside the form element.',
+                tooltip:
+                    'Enter the ID of the form this button should submit. This allows the button to work even when placed outside the form element.',
             },
             /* wwEditor:end */
         },

@@ -23,7 +23,7 @@
         @keydown="onKeyDown"
         @keyup="onKeyUp"
     >
-        <wwLayout path="buttonContent" direction="row" class="button-content" />
+        <wwLayout path="buttonContent" direction="row" class="button-content" ww-responsive="wwLayout" />
     </component>
 </template>
 
